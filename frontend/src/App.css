@@ -1,0 +1,111 @@
+/* App-level overrides */
+.App {
+  min-height: 100vh;
+  background: #0F1115;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+  50% { box-shadow: 0 0 20px rgba(255, 107, 0, 0.15); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* Heatmap cell hover */
+.heatmap-cell {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.card-hover:hover {
+  background-color: #1A1D23;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Metric glow */
+.metric-glow {
+  position: relative;
+}
+
+.metric-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.1);
+}
+
+.metric-glow:hover::after {
+  opacity: 1;
+}
+
+/* Login background */
+.login-bg {
+  background: linear-gradient(135deg, #0A0B0E 0%, #16181D 100%);
+}
+
+/* Status badge styles */
+.status-approved { color: #10B981; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); }
+.status-pending { color: #FF6B00; background: rgba(255, 107, 0, 0.1); border: 1px solid rgba(255, 107, 0, 0.2); }
+.status-rejected { color: #EF4444; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); }
+
+/* Impact score styles */
+.impact-low { color: #10B981; }
+.impact-medium { color: #FF6B00; }
+.impact-high { color: #EF4444; }
